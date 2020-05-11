@@ -12,9 +12,82 @@ const rl = readline.createInterface({
 
 
 const pigLatin = (word) => {
+  // convert word in array of words using "space" as separator
+  let words = word.split(" ")
+  // loop words
+  for  (let i = 0 ; i < words.length ; i++){
+    let wordType = getWordType(words[i])
+    console.log(wordType)
+    let newWord = cleanWord(words[i])
+    console.log(newWord)
+    if (wordType == "vowel") {
+      // call convertVowel function
+       newWord = convertVowel(newWord)
+      // grab result and override item in array
+      words[i] = newWord
+    } else if (wordType == "consonant") {
+      // call convertConsonant function
+      newWord = convertConsonant(newWord)
+      // grab result and override item in array
+      words[i] = newWord
+    } else {
+      console.log("Can't find word type")
+    }
+// end loop
+}
+  // convert word array in string
+  let newString = words.join(" ")
+  return newString
+}
 
-  // Your code here
+const getWordType = (word) => {
+  let vowels = ["a", "e", "i", "o", "u"]
+  let wordType = ""
+  for  (let i = 0 ; i < vowels.length ; i++){
+    if(word.charAt(0) == vowels[i]){
+      wordType = "vowel"
+      break
+    } else {
+      wordType = "consonant"
+    }
+  }
+  return wordType
+}
 
+const cleanWord = (word) => {
+  let newWord = word
+  newWord = newWord.replace("4", "a")
+  newWord = newWord.replace("3", "e")
+  newWord = newWord.replace("1", "i")
+  newWord = newWord.replace("0", "o")
+  newWord = newWord.trim()
+  newWord = newWord.toLowerCase()
+  return newWord
+}
+
+const convertVowel = (word) => {
+  let newWord = word + "yay"
+  return newWord
+}
+
+const convertConsonant = (word) => {
+  let newWord = ""
+  let newWord1 = ""
+  let newWord2 = ""
+  let foundVowel = false
+  for  (let i = 0 ; i < word.length ; i++){
+    if (word.charAt(i) == "a" || word.charAt(i) == "e" || word.charAt(i) == "i" || word.charAt(i) == "o" || word.charAt(i) == "u") {
+      foundVowel = true
+    }
+    if (foundVowel == false) {
+      newWord1 = newWord1 + word.charAt(i)
+    } else {
+      newWord2 = newWord2 + word.charAt(i)
+    }
+  }
+  newWord = newWord2 + newWord1
+  newWord = newWord + "ay"
+  return newWord
 }
 
 // the first function called in the program to get an input from the user
