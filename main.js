@@ -1,21 +1,14 @@
 'use strict';
 
 // brings in the assert module for unit testing
-// const assert = require('assert');
+const assert = require('assert');
 // brings in the readline module to access the command line
-// const readline = require('readline');
+const readline = require('readline');
 // use the readline module to print out to the command line
-/* const rl = readline.createInterface({
+const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
-}); */
-
-
-const pigLatinTranslate = () => {
-  let word = document.getElementById("wordInput").value;
-  let pigLatinWord = pigLatin(word);
-  document.getElementById("getWordType").innerHTML = pigLatinWord;
-}
+});
 
 
 const pigLatin = (word) => {
@@ -110,7 +103,7 @@ const getPrompt = () => {
 // Unit Tests
 // You use them run the command: npm test main.js
 // to close them ctrl + C
-/* if (typeof describe === 'function') {
+if (typeof describe === 'function') {
 
   describe('#pigLatin()', () => {
     it('should translate a simple word', () => {
@@ -135,7 +128,6 @@ const getPrompt = () => {
   getPrompt();
 
 }
-*/
 
 
 
@@ -150,4 +142,3 @@ const getPrompt = () => {
 // 1. if word begins with a vowel send to one function: adds "yay"
 // 2. if word begins in with a consonant send to another function: splices off beginning, returns word with new ending.
 // 3. if multiple words, create array of words, loop over them, sending them to different functions and creating a new array with the new words.
-
